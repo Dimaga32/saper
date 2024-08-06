@@ -1,0 +1,195 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body > input[type=number]:nth-child(5),body > input[type=number]:nth-child(2){
+    width: 300px;
+    height: 30px;
+    line-height: 30px;
+    border-radius:20px ;
+    text-align: center;
+    font-size: 26px;
+}
+input[type='submit']{
+    width: 500px;
+    height: 100px;
+    border: 3px solid black;
+    background-color: rgb(235, 138, 138);
+    font-size: 36px;
+    font-weight: 500;
+    border-radius: 50px;
+
+}   
+body > input[type=number]:nth-child(5){
+    margin-bottom: 40px;
+}
+span{
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+.grid{
+    display: grid;
+    justify-content: auto;
+    justify-content: auto;
+    align-content: auto;
+    align-items: auto;
+    justify-items: auto;
+    width: 700px;
+    height: 700px;
+    border: 2px solid black;  
+    grid-template-columns:repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+
+}
+.lose{
+    position: fixed;
+    width: 60%;
+    height: 30%;
+    top:35%;
+    left:20%;
+    background-color: bisque;
+    line-height: 100%;
+    text-align: center;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 40px;
+    font-weight: 900;
+    border: 6px solid black;
+}
+.bomb{
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    line-height: 80px;
+    text-align: center;
+    background-color: white;
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    background-image: url(https://w7.pngwing.com/pngs/645/478/png-transparent-bomb-landmine-explosive-grey-marine-mines-spikes-round-metal.png);
+    background-size: cover;
+}
+.sota{
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    line-height: 80px;
+    text-align: center;
+    background-color: white;
+    border: clamp(0px, 0.3vw ,10px) solid;
+    border-color: rgb(134, 134, 134) rgb(134, 134, 134) rgb(59, 59, 59) rgb(59, 59, 59);
+}
+.defuse{
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    line-height: 80px;
+    text-align: center;
+    background-color: white;
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    background-image: url(https://avatars.mds.yandex.net/i?id=066402a01b37fd7312d0409d3715fab8_l-5273370-images-thumbs&n=13);
+    background-size: cover;
+    background-position: center;
+}
+.for0{
+    border: clamp(0px, 0.2vw ,10px) solid black;
+}
+.for1{
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    font-weight: 900;
+    color: blue;
+    text-align: center;
+}
+.for2{
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    font-weight: 900;
+    color: green;
+    text-align: center;
+}
+.for3{
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    font-weight: 900;
+    color: red;
+    text-align: center;
+}
+.for4{
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    font-weight: 900;
+    color: rgb(122, 0, 0);
+    text-align: center;
+}
+.for5{
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    font-weight: 900;
+    color: brown;
+    text-align: center;
+}
+.for6{
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    font-weight: 900;
+    color: rgb(0, 204, 255);
+    text-align: center;
+}
+.for7{
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    font-weight: 900;
+    color: black;
+    text-align: center;
+}
+.for8{
+    border: clamp(0px, 0.2vw ,10px) solid black;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+}
+#checkbox{
+    display: none;
+}
+.check_box_vie{
+    width: 100px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: green;
+    display: inline-block;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.circle{
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+}
+#checkbox:checked+.check_box_vie .circle{
+    position: relative;
+    animation: turn 300ms linear 0s 1 normal forwards ; 
+  
+}
+@keyframes turn {
+    from{Left:0px}
+    to{left:50px;}
+}
+@keyframes off {
+    from{Left:50px}
+    to{left:0px;}
+}
+#checkbox:not(:checked)+.check_box_vie .circle{
+    position: relative;
+    animation: off 300ms linear 0s 1 normal forwards ; 
+}
