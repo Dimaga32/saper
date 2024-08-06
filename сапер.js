@@ -2,9 +2,10 @@ let much_sots=Number($('body > input[type=number]:nth-child(2)')[0].value)
 let much_bombs=Number($('body > input[type=number]:nth-child(5)')[0].value)
 grider()
 $('body > input[type=number]:nth-child(2)').on('change',function(e){
-    if (e.target.value>=100) e.target.value=100
-    much_sots=e.target.value
-    if (much_bombs>=(much_sots*much_sots)) {$('body > input[type=number]:nth-child(5)')[0].value=(much_sots*much_sots)}
+    if (e.target.value>40) {e.target.value=40}
+    much_sots=Number(e.target.value)
+    if (much_bombs>(much_sots*much_sots)) {$('body > input[type=number]:nth-child(5)')[0].value=(much_sots*much_sots-1)}
+    if($('body > input[type=number]:nth-child(5)')[0].value<0){$('body > input[type=number]:nth-child(5)')[0].value=0}
     much_bombs=Number($('body > input[type=number]:nth-child(5)')[0].value)
     grider()
     number_Bombs()
@@ -12,8 +13,9 @@ $('body > input[type=number]:nth-child(2)').on('change',function(e){
 })
 
 $('body > input[type=number]:nth-child(5)').on('change',function(e){
-    if (e.target.value>=(much_sots*much_sots)) e.target.value=(much_sots*much_sots)
-    much_bombs=e.target.value
+    if (e.target.value>=(much_sots*much_sots)) e.target.value=(much_sots*much_sots-1)
+    much_bombs=Number(e.target.value)
+    grider()
     number_Bombs()
     matrixer()
 })
@@ -70,17 +72,16 @@ function Showbomb(){
         $(`.sota[data-counter=${number_bombs[i]}]`).addClass('bomb').removeClass('sota')
     }
 }
-function lose(){
-    $('.grid').append(`<div class="lose">Вы проиграли<br><input type="submit" value="Начать сначала"></div>`)
-    $('.lose').fadeOut(0).slideDown(2000)
-    $(`input[type=submit]`).on('click',function(){location.reload ()})}
+ function lose(){
+     $('.grid').append(`<div class="lose">Вы проиграли<br><input type="submit" value="Начать сначала"></div>`)
+     $('.lose').fadeOut(0).slideDown(2000)
+     $(`input[type=submit]`).on('click',function(){location.reload ()})}
 function Show(el){
     let num=Number(el.dataset.counter)
     let pos_x=num%much_sots
     let pos_y=(num-pos_x)/(much_sots)
     let bc=0
     if((pos_y+1)<much_sots){
-        console.log(number_bombs.includes(num+much_sots+1))
         if(((pos_x+1)<much_sots)&&number_bombs.includes(num+much_sots+1)){bc++}
         if(((pos_x-1)>=0)&&number_bombs.includes(num+much_sots-1)){bc++}
         if(number_bombs.includes(num+much_sots)){bc++}
@@ -91,22 +92,23 @@ function Show(el){
         if(number_bombs.includes(num-much_sots)){bc++}
     }
     if(((pos_x+1)<much_sots)&&number_bombs.includes(num+1)){bc++}
-    if(((pos_x-1)<much_sots)&&number_bombs.includes(num-1)){bc++}
+    if(((pos_x-1)>=0)&&number_bombs.includes(num-1)){bc++}
     $(el).addClass(`for${bc}`).removeClass(`sota`)
     if(!(bc==0)){$(el).text(bc).css('line-height',`${$(el).height()}px`).css('font-size',`${($(el).height())*2/3}px`)}
-    if (bc==0){
-        if((pos_y+1)<much_sots){
-            if(((pos_x+1)<much_sots)){$(`.sota[data-counter=${num+much_sots+1}]`).click()}
-            if(((pos_x-1)>=0)){$(`.sota[data-counter=${num+much_sots-1}]`).click()}
-            $(`.sota[data-counter=${num+much_sots}]`).click()
-        }
-        if((pos_y-1)>=0){
+     if (bc==0){
+         if((pos_y+1)<much_sots){
+            console.log(num+much_sots+1)
+             if(((pos_x+1)<much_sots)){$(`.sota[data-counter=${num+much_sots+1}]`).click()}
+             if(((pos_x-1)>=0)){$(`.sota[data-counter=${num+much_sots-1}]`).click()}
+             $(`.sota[data-counter=${num+much_sots}]`).click()
+         }
+         if((pos_y-1)>=0){
             if(((pos_x+1)<much_sots)){$(`.sota[data-counter=${num-much_sots+1}]`).click()}
-            if(((pos_x-1)>=0)){$(`.sota[data-counter=${num-much_sots-1}]`).click()}
-            $(`.sota[data-counter=${num-much_sots}]`).click()
-        }
-        if(((pos_x+1)<much_sots)){$(`.sota[data-counter=${num+1}]`).click()}
-        if(((pos_x-1)<much_sots)){$(`.sota[data-counter=${num-1}]`).click()}
+             if(((pos_x-1)>=0)){$(`.sota[data-counter=${num-much_sots-1}]`).click()}
+             $(`.sota[data-counter=${num-much_sots}]`).click()
+         }
+         if(((pos_x+1)<much_sots)){$(`.sota[data-counter=${num+1}]`).click()}
+         if(((pos_x-1)>=0)){$(`.sota[data-counter=${num-1}]`).click()}
     }
 }
 function ToggleDefuse(el){

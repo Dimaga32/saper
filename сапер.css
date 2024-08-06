@@ -106,42 +106,49 @@ span{
 }
 .for0{
     border: clamp(0px, 0.2vw ,10px) solid black;
+    box-sizing: border-box;
 }
 .for1{
     border: clamp(0px, 0.2vw ,10px) solid black;
     font-weight: 900;
     color: blue;
     text-align: center;
+    box-sizing: border-box;
 }
 .for2{
     border: clamp(0px, 0.2vw ,10px) solid black;
     font-weight: 900;
     color: green;
     text-align: center;
+    box-sizing: border-box;
 }
 .for3{
     border: clamp(0px, 0.2vw ,10px) solid black;
     font-weight: 900;
     color: red;
     text-align: center;
+    box-sizing: border-box;
 }
 .for4{
     border: clamp(0px, 0.2vw ,10px) solid black;
     font-weight: 900;
     color: rgb(122, 0, 0);
     text-align: center;
+    box-sizing: border-box;
 }
 .for5{
     border: clamp(0px, 0.2vw ,10px) solid black;
     font-weight: 900;
     color: brown;
     text-align: center;
+    box-sizing: border-box;
 }
 .for6{
     border: clamp(0px, 0.2vw ,10px) solid black;
     font-weight: 900;
     color: rgb(0, 204, 255);
     text-align: center;
+    box-sizing: border-box;
 }
 .for7{
     border: clamp(0px, 0.2vw ,10px) solid black;
@@ -154,6 +161,7 @@ span{
     font-weight: 900;
     color: white;
     text-align: center;
+    box-sizing: border-box;
 }
 #checkbox{
     display: none;
