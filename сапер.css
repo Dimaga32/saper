@@ -50,7 +50,7 @@ span{
     grid-template-rows: repeat(9, 1fr);
 
 }
-.lose{
+.lose, .win{
     position: fixed;
     width: 60%;
     height: 30%;

@@ -60,7 +60,7 @@ for(let i=0;i<(much_sots*much_sots);i++){
 document.addEventListener('click',function(e){
     if(!(e.target.dataset.counter)) {return}
     if(number_bombs.includes(Number(e.target.dataset.counter))) {Showbomb();lose()}
-    else{Show(e.target)}
+    else{Show(e.target), win()}
 })
 document.addEventListener('contextmenu',function(e){
     if(!(e.target.dataset.counter)) {return}
@@ -82,20 +82,21 @@ function Show(el){
     let pos_y=(num-pos_x)/(much_sots)
     let bc=0
     if((pos_y+1)<much_sots){
-        if(((pos_x+1)<much_sots)&&number_bombs.includes(num+much_sots+1)){bc++}
-        if(((pos_x-1)>=0)&&number_bombs.includes(num+much_sots-1)){bc++}
-        if(number_bombs.includes(num+much_sots)){bc++}
+        if(((pos_x+1)<much_sots)&&matrix[pos_y+1][pos_x+1]=='bomb'){bc++}
+        if(((pos_x-1)>=0)&&matrix[pos_y+1][pos_x-1]=='bomb'){bc++}
+        if(matrix[pos_y+1][pos_x]=='bomb'){bc++}
     }
     if((pos_y-1)>=0){
-        if(((pos_x+1)<much_sots)&&number_bombs.includes(num-much_sots+1)){bc++}
-        if(((pos_x-1)>=0)&&number_bombs.includes(num-much_sots-1)){bc++}
-        if(number_bombs.includes(num-much_sots)){bc++}
+        if(((pos_x+1)<much_sots)&&matrix[pos_y-1][pos_x+1]=='bomb'){bc++}
+        if(((pos_x-1)>=0)&&matrix[pos_y-1][pos_x-1]=='bomb'){bc++}
+        if(matrix[pos_y-1][pos_x]=='bomb'){bc++}
     }
-    if(((pos_x+1)<much_sots)&&number_bombs.includes(num+1)){bc++}
-    if(((pos_x-1)>=0)&&number_bombs.includes(num-1)){bc++}
+    if(((pos_x+1)<much_sots)&&matrix[pos_y][pos_x+1]=='bomb'){bc++}
+    if(((pos_x-1)>=0)&&matrix[pos_y][pos_x-1]=='bomb'){bc++}
     $(el).addClass(`for${bc}`).removeClass(`sota`)
     if(!(bc==0)){$(el).text(bc).css('line-height',`${$(el).height()}px`).css('font-size',`${($(el).height())*2/3}px`)}
      if (bc==0){
+        setTimeout(function(){
          if((pos_y+1)<much_sots){
             console.log(num+much_sots+1)
              if(((pos_x+1)<much_sots)){$(`.sota[data-counter=${num+much_sots+1}]`).click()}
@@ -108,9 +109,17 @@ function Show(el){
              $(`.sota[data-counter=${num-much_sots}]`).click()
          }
          if(((pos_x+1)<much_sots)){$(`.sota[data-counter=${num+1}]`).click()}
-         if(((pos_x-1)>=0)){$(`.sota[data-counter=${num-1}]`).click()}
+         if(((pos_x-1)>=0)){$(`.sota[data-counter=${num-1}]`).click()}},20)
+         
     }
 }
 function ToggleDefuse(el){
 el.classList.toggle('sota')
-el.classList.toggle('defuse')}
+el.classList.toggle('defuse')};
+function win(){  
+     if(($('.for0').length+$('.for1').length+$('.for2').length+$('.for3').length+$('.for4').length+$('.for5').length+$('.for6').length+$('.for7').length+$('.for8').length)==((much_sots*much_sots)-much_bombs))
+    {
+        $('.grid').append(`<div class="win">Вы выиграли!<br><input type="submit" value="Еще раз"></div>`)
+        $('.win').fadeOut(0).slideDown(2000)
+        $(`input[type=submit]`).on('click',function(){location.reload ()})}
+ }
