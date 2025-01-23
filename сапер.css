@@ -24,7 +24,7 @@ input[type='submit']{
     font-weight: 500;
     border-radius: 50px;
 
-}   
+}
 body > input[type=number]:nth-child(5){
     margin-bottom: 40px;
 }
@@ -38,14 +38,14 @@ span{
 }
 .grid{
     display: grid;
-    justify-content: auto;
-    justify-content: auto;
-    align-content: auto;
-    align-items: auto;
+    justify-content: stretch;
+    justify-content: stretch;
+    align-content: stretch;
+    align-items: stretch;
     justify-items: auto;
     width: 700px;
     height: 700px;
-    border: 2px solid black;  
+    border: 2px solid black;
     grid-template-columns:repeat(9, 1fr);
     grid-template-rows: repeat(9, 1fr);
 
@@ -99,65 +99,65 @@ span{
     line-height: 80px;
     text-align: center;
     background-color: white;
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 2px solid black;
     background-image: url(https://avatars.mds.yandex.net/i?id=066402a01b37fd7312d0409d3715fab8_l-5273370-images-thumbs&n=13);
     background-size: cover;
     background-position: center;
 }
 .for0{
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 1px solid black;
     box-sizing: border-box;
 }
 .for1{
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 1px solid black;
     font-weight: 900;
     color: blue;
     text-align: center;
     box-sizing: border-box;
 }
 .for2{
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 1px solid black;
     font-weight: 900;
     color: green;
     text-align: center;
     box-sizing: border-box;
 }
 .for3{
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 1px solid black;
     font-weight: 900;
     color: red;
     text-align: center;
     box-sizing: border-box;
 }
 .for4{
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 1px solid black;
     font-weight: 900;
     color: rgb(122, 0, 0);
     text-align: center;
     box-sizing: border-box;
 }
 .for5{
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 1px solid black;
     font-weight: 900;
     color: brown;
     text-align: center;
     box-sizing: border-box;
 }
 .for6{
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 1px solid black;
     font-weight: 900;
     color: rgb(0, 204, 255);
     text-align: center;
     box-sizing: border-box;
 }
 .for7{
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 1px solid black;
     font-weight: 900;
     color: black;
     text-align: center;
 }
 .for8{
-    border: clamp(0px, 0.2vw ,10px) solid black;
+    border: 1px solid black;
     font-weight: 900;
     color: white;
     text-align: center;
